@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sky-django-ecommerce"
+version = "0.1.0"
+description = ""
+authors = ["Sumerian <shemerov.s@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "sky_django_ecommerce"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
