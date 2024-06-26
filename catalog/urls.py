@@ -6,6 +6,6 @@ from catalog.views import index, contacts
 app_name = CatalogConfig.name
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('contacts/', contacts, name='contacts')
+    path("", index, name="index"),
+    path("contacts/", contacts, name="contacts"),
 ]
