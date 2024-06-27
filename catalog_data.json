@@ -1,0 +1,36 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+      "category": "Smartphones",
+      "description": "Use mobile"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Samsung",
+      "description": "Latest version",
+      "image": "",
+      "category": 5,
+      "price": 10000.0,
+      "create_at": "2024-06-27",
+      "update_at": "2024-06-27"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "IPhone",
+      "description": "Latest version",
+      "image": "",
+      "category": 5,
+      "price": 20000.0,
+      "create_at": "2024-06-27",
+      "update_at": "2024-06-27"
+    }
+  }
+]
