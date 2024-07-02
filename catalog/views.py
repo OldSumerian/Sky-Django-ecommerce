@@ -3,13 +3,21 @@ from pathlib import Path
 from django.shortcuts import render
 import json
 from config import settings
-
+from catalog.models import Product
 
 FEEDBACK_FILE_PATH: Path = settings.BASE_DIR.joinpath("feedback.json")
 
 
 def index(request):
-    return render(request, template_name="index.html")
+    products_list = Product.objects.all()
+    context = {"object_list": products_list}
+    return render(request, "catalog/index.html", context)
+
+
+def get_product(request, pk):
+    one_product = Product.objects.get(pk=pk)
+    context = {"object": one_product}
+    return render(request, "catalog/product.html", context)
 
 
 def contacts(request):
@@ -23,4 +31,4 @@ def contacts(request):
         # with FEEDBACK_FILE_PATH.open(mode='w', encoding='utf-8') as file:
         #     json.dumps(data, file, indent=2, ensure_ascii=False)
 
-    return render(request, template_name="contacts.html")
+    return render(request, template_name="catalog/contacts.html")
