@@ -23,6 +23,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+
     name = models.CharField(
         max_length=100,
         verbose_name="Наименование",
@@ -35,7 +36,7 @@ class Product(models.Model):
         help_text="Введите описание товара",
     )
     image = models.ImageField(
-        upload_to="photos/",
+        upload_to="catalog/images/",
         blank=True,
         null=True,
         verbose_name="Фото товара",

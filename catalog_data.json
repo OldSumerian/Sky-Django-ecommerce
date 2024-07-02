@@ -9,28 +9,41 @@
   },
   {
     "model": "catalog.product",
-    "pk": 4,
+    "pk": 7,
     "fields": {
-      "name": "Samsung",
-      "description": "Latest version",
-      "image": "",
+      "name": "IPhone20",
+      "description": "Новейшая модель",
+      "image": "catalog/images/Iphone20.jpg",
       "category": 5,
-      "price": 10000.0,
-      "create_at": "2024-06-27",
-      "update_at": "2024-06-27"
+      "price": 50000.0,
+      "create_at": "2024-07-02",
+      "update_at": "2024-07-02"
     }
   },
   {
     "model": "catalog.product",
-    "pk": 5,
+    "pk": 8,
     "fields": {
-      "name": "IPhone",
-      "description": "Latest version",
-      "image": "",
+      "name": "Iphone10",
+      "description": "Проверенная временем модель",
+      "image": "catalog/images/Iphone.jpg",
       "category": 5,
       "price": 20000.0,
-      "create_at": "2024-06-27",
-      "update_at": "2024-06-27"
+      "create_at": "2024-07-02",
+      "update_at": "2024-07-02"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Samsung",
+      "description": "Бюджетная модель",
+      "image": "catalog/images/samsung.jpeg",
+      "category": 5,
+      "price": 15000.0,
+      "create_at": "2024-07-02",
+      "update_at": "2024-07-02"
     }
   }
 ]
