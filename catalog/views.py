@@ -2,8 +2,8 @@ from pathlib import Path
 from django.shortcuts import render
 import json
 
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from config import settings
 from catalog.models import Product
 
@@ -16,6 +16,13 @@ class CatalogListView(ListView):
 
 class CatalogDetailView(DetailView):
     model = Product
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        self.object.view_count += 1
+        self.object.save()
+        return self.object
+
 
 
 class CatalogCreateView(CreateView):
@@ -30,21 +37,20 @@ class CatalogUpdateView(UpdateView):
     fields = ('name', 'description', 'image', 'category', 'price')
     success_url = reverse_lazy("catalog:product_list")
 
+    def get_success_url(self):
+        return reverse(viewname="catalog:product_detail", kwargs={"pk": self.object.pk})
+
 
 class CatalogDeleteView(DeleteView):
     model = Product
     success_url = reverse_lazy("catalog:product_list")
 
 
-def contacts(request):
-    if request.method == "POST":
-        data = {
-            "name": request.POST.get("name"),
-            "phone": request.POST.get("phone"),
-            "message": request.POST.get("message"),
-        }
-        print(data)
-        # with FEEDBACK_FILE_PATH.open(mode='w', encoding='utf-8') as file:
-        #     json.dumps(data, file, indent=2, ensure_ascii=False)
+class ContactsView(TemplateView):
+    template_name = "catalog/contacts.html"
+    context_object_name = "contacts"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #context["contacts"] = json.loads(FEEDBACK_FILE_PATH.read_text(encoding='utf-8'))
+        return context
 
-    return render(request, template_name="catalog/contacts.html")
