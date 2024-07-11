@@ -1,23 +1,39 @@
 from pathlib import Path
-
 from django.shortcuts import render
 import json
+
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from config import settings
 from catalog.models import Product
 
 FEEDBACK_FILE_PATH: Path = settings.BASE_DIR.joinpath("feedback.json")
 
 
-def index(request):
-    products_list = Product.objects.all()
-    context = {"object_list": products_list}
-    return render(request, "catalog/index.html", context)
+class CatalogListView(ListView):
+    model = Product
 
 
-def get_product(request, pk):
-    one_product = Product.objects.get(pk=pk)
-    context = {"object": one_product}
-    return render(request, "catalog/product.html", context)
+class CatalogDetailView(DetailView):
+    model = Product
+
+
+class CatalogCreateView(CreateView):
+    model = Product
+    fields = ('name', 'description', 'image', 'category', 'price')
+    success_url = reverse_lazy("catalog:product_list")
+
+
+
+class CatalogUpdateView(UpdateView):
+    model = Product
+    fields = ('name', 'description', 'image', 'category', 'price')
+    success_url = reverse_lazy("catalog:product_list")
+
+
+class CatalogDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy("catalog:product_list")
 
 
 def contacts(request):

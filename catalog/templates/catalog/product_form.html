@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header">
+        ХАЙТЕК
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Добавить товар</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">
+                {% if object %}
+                Редактировать
+                {% else %}
+                Добавить
+                {% endif %}
+            </button>
+        </form>
+    </div>
+    <div class="card-footer text-body-secondary">
+        <a href="{% url 'catalog:product_list' %}">Вернуться к списку товаров</a>
+    </div>
+</div>
+
+{% endblock %}
