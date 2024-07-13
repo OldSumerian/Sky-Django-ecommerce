@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<div class="card text-center col-6 mx-auto">
+    <div class="card-header">
+        БЛОГ
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Вы уверены, что хотите удалить статью?</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Удалить</button>
+        </form>
+    </div>
+    <div class="card-footer text-body-secondary">
+        <a href="{% url 'blog:blogpost_list' %}">Вернуться к списку статей</a>
+    </div>
+</div>
+
+{% endblock %}
