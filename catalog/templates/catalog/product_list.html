@@ -22,6 +22,7 @@
 
                 <div class="card-body">
                     <p class="card-text">{{ object.name | title }}</p>
+                    <p class="card-text">Версия: {{ object.current_version }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <a class="btn btn-sm btn-outline-info"
@@ -45,7 +46,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-sm-12 col-md-6 mx-auto">
-            <a class="btn btn-primary" href="{% url 'catalog:product_create' %}" role="button">Добавить товар</a>
+            <a class="btn btn-primary mt-5"  href="{% url 'catalog:product_create' %}" role="button">Добавить товар</a>
         </div>
     </div>
 </div>

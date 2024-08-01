@@ -23,7 +23,6 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-
     name = models.CharField(
         max_length=100,
         verbose_name="Наименование",
@@ -59,3 +58,21 @@ class Product(models.Model):
 
     def __str__(self):
         return f"Товар: {self.name}, Категория: {self.category}, Цена: {self.price}"
+
+
+class ProductVersion(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="продукт",
+                                related_name='product_versions')
+    version_number = models.PositiveIntegerField(verbose_name="Номер версии")
+    version_name = models.CharField(max_length=100, verbose_name="Название версии")
+    is_current = models.BooleanField(verbose_name="Признак текущей версии", default=True)
+
+    class Meta:
+        verbose_name = "Версия продукта"
+        verbose_name_plural = "Версии продукта"
+        ordering = ["-version_number"]
+        unique_together = ["product", "version_number"]
+
+    def __str__(self):
+        return (f"Версия продукта: {self.product}, Номер версии: {self.version_number}, "
+                f"Название версии: {self.version_name}")
