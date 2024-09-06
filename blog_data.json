@@ -1,0 +1,100 @@
+[
+  {
+    "model": "blog.blogpost",
+    "pk": 1,
+    "fields": {
+      "title": "Первая статья",
+      "slug": "0",
+      "content": "Текст первой статьи, не редактированнный",
+      "image": "",
+      "create_at": "2024-07-12T10:37:39.156Z",
+      "update_at": "2024-07-23T13:21:05.634Z",
+      "published": true,
+      "views": 2
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 2,
+    "fields": {
+      "title": "Вторая статья",
+      "slug": "0",
+      "content": "Отредактированнный текст",
+      "image": "",
+      "create_at": "2024-07-12T11:00:12.577Z",
+      "update_at": "2024-07-13T09:47:15.439Z",
+      "published": true,
+      "views": 3
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 4,
+    "fields": {
+      "title": "Четвертая статья",
+      "slug": "0",
+      "content": "Не ищите третью статью, она удалена",
+      "image": "",
+      "create_at": "2024-07-12T11:12:16.761Z",
+      "update_at": "2024-07-13T08:49:56.750Z",
+      "published": true,
+      "views": 2
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 7,
+    "fields": {
+      "title": "Статья шесть",
+      "slug": "",
+      "content": "Просто текст",
+      "image": "",
+      "create_at": "2024-07-13T08:43:32.348Z",
+      "update_at": "2024-07-13T08:45:33.216Z",
+      "published": true,
+      "views": 2
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 8,
+    "fields": {
+      "title": "Седьмая статья",
+      "slug": "",
+      "content": "Проверка наличия слага\r\n\r\nДжанговский слагифай не работает с кириллицей, после изменения пакета все ок",
+      "image": "",
+      "create_at": "2024-07-13T08:53:21.855Z",
+      "update_at": "2024-07-13T09:36:57.906Z",
+      "published": true,
+      "views": 2
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 9,
+    "fields": {
+      "title": "Test article",
+      "slug": "test-article",
+      "content": "Is slugify run?\r\nДобавим кириллицы\r\nЕще немного текста\r\n{{7*7}}",
+      "image": "",
+      "create_at": "2024-07-13T08:58:31.023Z",
+      "update_at": "2024-07-23T13:21:53.790Z",
+      "published": true,
+      "views": 6
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 10,
+    "fields": {
+      "title": "Девятая статья",
+      "slug": "deviataia-statia",
+      "content": "Не должна отображаться потому что не опубликована но должна быть в базе",
+      "image": "",
+      "create_at": "2024-07-13T09:01:54.322Z",
+      "update_at": "2024-07-13T09:01:54.326Z",
+      "published": false,
+      "views": 0
+    }
+  }
+]

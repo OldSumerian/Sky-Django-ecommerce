@@ -8,12 +8,14 @@ packages = [{include = "sky_django_ecommerce"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^5.0.6"
+django = "4.2.2"
 psycopg2-binary = "^2.9.9"
 black = "^24.4.2"
 pillow = "^10.3.0"
 ipython = "^8.25.0"
 python-slugify = "^8.0.4"
+redis = "^5.0.8"
+python-dotenv = "^1.0.1"
 
 
 [build-system]

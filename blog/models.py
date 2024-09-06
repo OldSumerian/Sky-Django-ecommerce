@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
-from django.utils.text import slugify
+from slugify import slugify
 from requests import request
 
 class BlogPost(models.Model):

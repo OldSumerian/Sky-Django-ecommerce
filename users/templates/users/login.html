@@ -1,0 +1,35 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <form class="row" method="post" enctype="multipart/form-data">
+        <div class="col-12">
+            <div class="card text-center">
+                <div class="card-header">
+                    ХАЙТЕК
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Авторизация</h5>
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">
+                        {% if object %}
+                        Выйти
+
+                        {% else %}
+                        Войти
+                        {% endif %}
+                    </button>
+                    <a href="{% url 'users:restore_password' %}">Восстановить пароль</a>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <a href="{% url 'catalog:product_list' %}">Вернуться на главную страницу</a>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+{% endblock %}

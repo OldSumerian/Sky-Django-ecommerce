@@ -11,13 +11,14 @@
     "model": "catalog.product",
     "pk": 7,
     "fields": {
-      "name": "IPhone20",
-      "description": "Новейшая модель",
+      "name": "IPhone20+",
+      "description": "Самая Новейшая модель",
       "image": "catalog/images/Iphone20.jpg",
       "category": 5,
       "price": 50000.0,
-      "create_at": "2024-07-02",
-      "update_at": "2024-07-02"
+      "create_at": "2024-08-01",
+      "update_at": "2024-07-02",
+      "view_count": 10
     }
   },
   {
@@ -29,8 +30,9 @@
       "image": "catalog/images/Iphone.jpg",
       "category": 5,
       "price": 20000.0,
-      "create_at": "2024-07-02",
-      "update_at": "2024-07-02"
+      "create_at": "2024-07-23",
+      "update_at": "2024-07-02",
+      "view_count": 3
     }
   },
   {
@@ -38,12 +40,33 @@
     "pk": 9,
     "fields": {
       "name": "Samsung",
-      "description": "Бюджетная модель",
+      "description": "Бюджетная, но функциональная модель",
       "image": "catalog/images/samsung.jpeg",
       "category": 5,
       "price": 15000.0,
-      "create_at": "2024-07-02",
-      "update_at": "2024-07-02"
+      "create_at": "2024-07-10",
+      "update_at": "2024-07-02",
+      "view_count": 0
+    }
+  },
+  {
+    "model": "catalog.productversion",
+    "pk": 1,
+    "fields": {
+      "product": 7,
+      "version_number": 4,
+      "version_name": "more RAM",
+      "is_current": true
+    }
+  },
+  {
+    "model": "catalog.productversion",
+    "pk": 2,
+    "fields": {
+      "product": 7,
+      "version_number": 2,
+      "version_name": "ROM",
+      "is_current": false
     }
   }
 ]
