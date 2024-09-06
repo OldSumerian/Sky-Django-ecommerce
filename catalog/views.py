@@ -1,18 +1,29 @@
+from itertools import product
 from pathlib import Path
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from catalog.forms import ProductForm, ProductVersionForm
+from catalog.services import get_products_from_cache, get_categories_from_cache
 from config import settings
-from catalog.models import Product, ProductVersion
+from catalog.models import Product, ProductVersion, Category
 
 FEEDBACK_FILE_PATH: Path = settings.BASE_DIR.joinpath("feedback.json")
 
+class CategoryListView(ListView):
+    model = Category
+
+    def get_queryset(self):
+        return get_categories_from_cache()
 
 class CatalogListView(ListView):
     model = Product
+
+    def get_queryset(self):
+        return get_products_from_cache()
 
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
@@ -39,13 +50,21 @@ class CatalogDetailView(DetailView):
         return self.object
 
 
-class CatalogCreateView(CreateView):
+class CatalogCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:product_list")
 
 
-class CatalogUpdateView(UpdateView):
+    def form_valid(self, form):
+        product = form.save()
+        product.owner = self.request.user
+        product.save()
+        return super().form_valid(form)
+
+
+
+class CatalogUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:product_list")
@@ -73,7 +92,7 @@ class CatalogUpdateView(UpdateView):
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
-class CatalogDeleteView(DeleteView):
+class CatalogDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy("catalog:product_list")
 
