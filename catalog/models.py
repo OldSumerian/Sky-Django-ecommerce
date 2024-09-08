@@ -72,11 +72,23 @@ class Product(models.Model):
         on_delete=SET_NULL
     )
 
+    is_published = models.BooleanField(
+        verbose_name="Опубликован",
+        default=False,
+        help_text="Выберите опубликован ли товар"
+    )
+
 
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
         ordering = ["category", "name", "price"]
+
+        permissions = [
+            ('published_rights', 'Изменить статус публикации'),
+            ('description_rights', 'Изменить описание товара'),
+            ('category_rights', 'Изменить категорию товара')
+        ]
 
     def __str__(self):
         return f"Товар: {self.name}, Категория: {self.category}, Цена: {self.price}"
