@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'description', 'image', 'category', 'price', 'owner')
+        fields = ('__all__')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -62,4 +62,9 @@ class ProductVersionForm(forms.ModelForm):
         #         raise forms.ValidationError("Номер версии должен быть положительным числом.")
         #     return cleaned_version_number
         
-        
+class ProductFormFromModerator(forms.ModelForm):
+
+
+    class Meta:
+        model = Product
+        fields = ('description', 'category', 'is_published')

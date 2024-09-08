@@ -27,10 +27,14 @@
                         <div class="btn-group">
                             <a class="btn btn-sm btn-outline-info"
                                href="{% url 'catalog:product_detail' object.pk %}" role="button">Подробности</a>
+                            {% if perms.catalog.description_rights and perms.catalog.category_rights and perms.catalog.published_rights or user == object.owner %}
                             <a class="btn btn-sm btn-outline-warning"
                                href="{% url 'catalog:product_update' object.pk %}" role="button">Редактировать</a>
+                            {% endif %}
+                            {% if user == object.owner %}
                             <a class="btn btn-sm btn-outline-danger"
                                href="{% url 'catalog:product_delete' object.pk %}" role="button">Удалить</a>
+                            {% endif %}
                         </div>
                         <small class="text-body-secondary">{{ object.create_at }}</small>
                     </div>
